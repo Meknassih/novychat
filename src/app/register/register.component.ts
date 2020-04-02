@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'novy-register',
@@ -11,7 +12,8 @@ export class RegisterComponent implements OnInit {
   private registerForm: FormGroup;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private routerService: Router
   ) {
     this.registerForm = new FormGroup({
       nickname: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -28,6 +30,7 @@ export class RegisterComponent implements OnInit {
     this.userService.register(this.registerForm.value.nickname, this.registerForm.value.password)
       .then(user => {
         // redirect here
+        this.routerService.navigate(['chat']);
       })
       .catch(error => {
         // display error
@@ -39,6 +42,7 @@ export class RegisterComponent implements OnInit {
     this.userService.login(this.registerForm.value.nickname, this.registerForm.value.password)
       .then(user => {
         // redirect here
+        this.routerService.navigate(['chat']);
       })
       .catch(error => {
         // display error

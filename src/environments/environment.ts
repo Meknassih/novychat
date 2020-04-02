@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  parseApiKey: 'KLFeg95hmHNHwl5UskTmEIzUaYmvzfASxwKagyZx',
-  parseJsKey: 'lfH58lX94uy3vj8P4gkoKtKAOtQJSiKbfQ4BGYYa',
+  parseApiKey: 'INSERT KEY',
+  parseJsKey: 'INSERT KEY',
   parseServerUrl: 'https://parseapi.back4app.com/'
 };
 

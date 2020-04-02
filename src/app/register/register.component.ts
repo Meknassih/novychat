@@ -24,9 +24,19 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.registerForm.value);
+    console.warn('register', this.registerForm.value);
     this.userService.register(this.registerForm.value.nickname, this.registerForm.value.password)
+      .then(user => {
+        // redirect here
+      })
+      .catch(error => {
+        // display error
+      });
+  }
+
+  login() {
+    console.warn('login',this.registerForm.value);
+    this.userService.login(this.registerForm.value.nickname, this.registerForm.value.password)
       .then(user => {
         // redirect here
       })

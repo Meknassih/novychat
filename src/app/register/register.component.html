@@ -18,40 +18,46 @@
         <div class="content">
           <h2>Register</h2>
         </div>
-        <div class="field">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="Nickname">
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-check"></i>
-            </span>
-          </p>
-        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="field">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="Nickname" formControlName="nickname">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </p>
+            <p class="help is-danger" *ngIf="registerForm.controls.nickname.dirty && registerForm.controls.nickname.errors?.required">A nickname is required.</p>
+            <p class="help is-danger" *ngIf="registerForm.controls.nickname.dirty && registerForm.controls.nickname.errors?.minlength">Minimum length : {{registerForm.controls.nickname.errors.minlength.requiredLength}}, current length : {{registerForm.controls.nickname.errors.minlength.actualLength}}</p>
+          </div>
 
-        <div class="field">
-          <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password">
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" type="password" placeholder="Password" formControlName="password">
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
+            <p class="help is-danger" *ngIf="registerForm.controls.password.dirty && registerForm.controls.password.errors?.required">A password is required.</p>
+            <p class="help is-danger" *ngIf="registerForm.controls.password.dirty && registerForm.controls.password.errors?.minlength">Minimum length : {{registerForm.controls.password.errors.minlength.requiredLength}}, current length : {{registerForm.controls.password.errors.minlength.actualLength}}</p>
+          </div>
 
 
-        <div class="field is-grouped is-grouped-right">
-          <p class="control">
-            <button class="button is-light">
-              Login
-            </button>
-          </p>
-          <p class="control">
-            <button class="button is-info">
-              Register
-            </button>
-          </p>
-        </div>
+          <div class="field is-grouped is-grouped-right">
+            <p class="control">
+              <button class="button is-light">
+                Login
+              </button>
+            </p>
+            <p class="control">
+              <button class="button is-info" type="submit" [disabled]="!registerForm.valid"> 
+                Register
+              </button>
+            </p>
+          </div>
+        </form>
       </div>
     </article>
   </div>

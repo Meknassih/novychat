@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as Parse from 'parse';
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'novy-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'novychat';
+
+  constructor() {
+    // Initialize Parse App Keys
+    Parse.initialize(environment.parseApiKey, environment.parseJsKey);
+    Parse.serverURL = environment.parseServerUrl;
+  }
 }

@@ -15,7 +15,7 @@
         <div class="field">
           <label class="label">Message</label>
           <div class="control">
-            <textarea class="textarea is-info" placeholder="Write your message and press ENTER to send"></textarea>
+            <textarea class="textarea is-info" placeholder="Write your message and press ENTER to send" #messageInput (keyup.enter)="onEnter(messageInput.value)"></textarea>
           </div>
         </div>
       </div>
